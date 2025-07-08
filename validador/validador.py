@@ -1,5 +1,23 @@
 import re
 
+def validar_email(email):
+    padrao = r"^[\w\.-]+@[\w\.-]+\.\w{2,4}$"
+    if re.match(padrao, email):
+        return True
+    return False
+
+def validar_telefone(telefone):
+    padrao = r"^\(\d{2}\) \d{4,5}-\d{4}$"
+    if re.match(padrao, telefone):
+        return True
+    return False
+
+def validar_cpf(cpf):
+    padrao = r"^\d{3}\.\d{3}.\d{3}\-\d{2}$"
+    if re.match(padrao, cpf):
+        return True
+    return False
+
 def menu():
     while True:
         print("=== Validador de Dados ===")
@@ -11,11 +29,19 @@ def menu():
         opcao = input("Escolha uma opção: ")
 
         if opcao == "1":
-            print("Validar email")
+            email= input("Digite o e-mail a ser validado: ")
+            if validar_email(email):
+                print("E-mail válido.")
         elif opcao == "2":
-            print("Validar Telefone")
+            telefone = input("Digite o seu telefone a ser validado: ")
+            if validar_telefone(telefone):
+                return True
+            return False
         elif opcao == "3":
-            print("Validar CPF")
+            cpf = input("Digite o CPF a ser validado: ")
+            if validar_cpf(cpf):
+                return True
+            return False
         elif opcao == "4":
             print("Saindo do Validador. Até mais!")
             break
